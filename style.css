@@ -1,1 +1,269 @@
+* {
+  box-sizing: border-box;
+}
 
+body {
+  margin: 0;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #111827;
+  background: #f8fafc;
+}
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  height: 64px;
+  padding: 0 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.nav-title {
+  font-weight: 800;
+  font-size: 20px;
+}
+
+.nav-links a {
+  margin-left: 24px;
+  color: #334155;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.nav-links a:hover {
+  color: #2563eb;
+}
+
+.hero {
+  text-align: center;
+  padding: 80px 24px 56px;
+  background:
+    radial-gradient(circle at top left, rgba(37, 99, 235, 0.18), transparent 32%),
+    radial-gradient(circle at top right, rgba(14, 165, 233, 0.18), transparent 32%),
+    linear-gradient(180deg, #ffffff, #f8fafc);
+}
+
+.hero-logo {
+  max-width: 780px;
+  width: 92%;
+  margin-bottom: 20px;
+  border-radius: 24px;
+}
+
+h1 {
+  font-size: clamp(48px, 8vw, 92px);
+  margin: 0;
+  letter-spacing: -0.06em;
+}
+
+.hero h2 {
+  font-size: clamp(22px, 3vw, 34px);
+  margin: 12px 0 20px;
+  color: #2563eb;
+}
+
+.authors,
+.affiliation,
+.tagline {
+  color: #475569;
+  font-size: 18px;
+}
+
+.buttons {
+  margin: 28px 0;
+}
+
+.button {
+  display: inline-block;
+  margin: 8px;
+  padding: 12px 20px;
+  border-radius: 999px;
+  background: #111827;
+  color: white;
+  text-decoration: none;
+  font-weight: 700;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+  background: #2563eb;
+}
+
+.teaser-card {
+  max-width: 980px;
+  margin: 36px auto 12px;
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: 0 30px 70px rgba(15, 23, 42, 0.18);
+  background: #000;
+}
+
+.teaser-card video,
+.video-card video {
+  width: 100%;
+  display: block;
+}
+
+.section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 72px 24px;
+}
+
+.section h2 {
+  text-align: center;
+  font-size: 40px;
+  margin-bottom: 28px;
+  letter-spacing: -0.04em;
+}
+
+.section p {
+  font-size: 18px;
+  line-height: 1.7;
+  color: #334155;
+}
+
+.section-intro {
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+.method-grid,
+.video-grid,
+.result-cards {
+  display: grid;
+  gap: 24px;
+}
+
+.method-grid {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.method-step,
+.result-card,
+.video-card {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 24px;
+  padding: 24px;
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
+}
+
+.method-step span {
+  display: inline-flex;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  background: #2563eb;
+  color: white;
+  font-weight: 800;
+}
+
+.method-step h3,
+.video-card h3,
+.result-card h3 {
+  margin-bottom: 8px;
+}
+
+.wide-image {
+  width: 100%;
+  margin-top: 36px;
+  border-radius: 28px;
+  box-shadow: 0 20px 55px rgba(15, 23, 42, 0.12);
+}
+
+.video-grid {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.video-grid.two {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.video-card {
+  padding: 14px;
+  overflow: hidden;
+}
+
+.video-card video {
+  border-radius: 18px;
+  background: #000;
+}
+
+.video-card h3 {
+  text-align: center;
+  font-size: 22px;
+}
+
+.video-card p {
+  font-size: 16px;
+  text-align: center;
+}
+
+.dark-section {
+  max-width: none;
+  background: #0f172a;
+  color: white;
+}
+
+.dark-section h2,
+.dark-section h3 {
+  color: white;
+}
+
+.dark-section .video-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.dark-section .video-card {
+  background: #111827;
+  border-color: #1e293b;
+}
+
+.dark-section p {
+  color: #cbd5e1;
+}
+
+.result-cards {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+pre {
+  background: #0f172a;
+  color: #e5e7eb;
+  padding: 24px;
+  border-radius: 18px;
+  overflow-x: auto;
+}
+
+footer {
+  text-align: center;
+  padding: 40px;
+  color: #64748b;
+}
+
+@media (max-width: 900px) {
+  .navbar {
+    padding: 0 20px;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .method-grid,
+  .video-grid,
+  .video-grid.two,
+  .result-cards {
+    grid-template-columns: 1fr;
+  }
+}
