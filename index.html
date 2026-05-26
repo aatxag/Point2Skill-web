@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Point2Skill</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -21,8 +22,9 @@
   <header class="hero">
     <img src="/Point2Skill-web/assets/point2skill_logo.png" alt="Point2Skill logo" class="hero-logo" />
 
-    <h1>Point2Skill</h1>
-    <h2>3D Goals for Reusable Robot Skills</h2>
+    
+    <h2>Interactive 3D Goal-Conditioned
+Diffusion Primitives for Robot Control</h2>
 
     <p class="authors">
       Alaitz Atxa Galdos · Co-authors
@@ -46,20 +48,19 @@
     </div>
 
     <p class="tagline">
-      A user or VLM selects a 3D target point. Point2Skill turns it into a reusable robot skill.
+      Interfsce for selecting the goal a 3D target point. Point2Skill turns it into a reusable robot skill.
     </p>
   </header>
 
   <section id="abstract" class="section">
     <h2>Abstract</h2>
     <p>
-      Effective robot manipulation requires translating high-level intent into precise physical interaction.
-      A common approach is to use language as a task specification, with vision-language models providing
-      a flexible interface for interpreting instructions and reasoning about the scene. However, reliable
-      execution often requires more than semantic task understanding: manipulation policies benefit from
-      explicit geometric goals that specify where and how the robot should interact with the environment.
-      We introduce <b>Point2Skill</b>, a framework for specifying reusable manipulation skills through
-      3D target points.
+Effective robot manipulation requires translating high-level intent into precise physical interaction. A common approach is to use language as a task specification, with vision-language models providing a flexible interface for interpret-3
+ing instructions and reasoning about the scene. However, reliable execution often requires more than semantic task understanding: manipulation policies benefit from explicit geometric goals that specify where and how the robot should interact with the environment. We introduce <b>Point2Skill</b>, a framework for specifying7
+reusable manipulation skills through 3D target points. Each primitive is modeled as a Diffusion Transformer policy conditioned on a goal point via adaptive Layer Normalization, allowing geometric intent to modulate the denoising process with out the overhead of cross-attention. We instantiate a library of primitives, including Pick, Place, Insert, Open, and Close, and provide an interactive click-based interface through which either a human or a Vision-Language Model can select13
+Submitted to the 10th Conference on Robot Learning (CoRL 2026). Do not distribute. the target point. This point-based parameterization abstracts skills away from object identity, enabling a single primitive to generalize across object categories and15
+novel instances. By separating task-level reasoning from motion generation, the proposed framework supports reuse and composition of manipulation skills. We further show that Vision-Language Models can sequence goal-conditioned primi-18
+tives to perform long-horizon manipulation tasks. Experiments on a Franka robot across multiple tasks and objects demonstrate strong generalization to unseen objects while enabling reliable execution of composed behaviors
     </p>
   </section>
 
