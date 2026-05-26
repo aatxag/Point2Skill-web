@@ -92,44 +92,89 @@ reusable manipulation skills through 3D target points. Each primitive is modeled
     <img src="assets/architecture_full.png" alt="Point2Skill architecture" class="wide-image" />
   </section>
 
-  <section id="skills" class="section">
-    <h2>Primitive Skills</h2>
-    <p class="section-intro">
-      Point2Skill learns a library of reusable goal-conditioned primitives.
-    </p>
+<section id="skills" class="section">
+  <h2>Primitive Skills</h2>
+  <p class="section-intro">
+    Point2Skill learns a library of reusable goal-conditioned primitives. Each primitive receives visual observations, robot proprioception, and a user- or VLM-selected 3D goal point, and outputs an action trajectory through a goal-conditioned Diffusion Transformer.
+  </p>
 
-    <div class="video-grid">
-      <div class="video-card">
-        <video autoplay muted loop playsinline>
-          <source src="assets/videos/pick.mp4" type="video/mp4" />
-        </video>
-        <h3>Pick</h3>
+  <div class="video-grid">
+    <div class="video-card">
+      <video autoplay muted loop playsinline>
+        <source src="assets/videos/pick.mp4" type="video/mp4" />
+      </video>
+      <h3>Pick</h3>
+      <p>A 3D goal point specifies where the robot should grasp.</p>
+    </div>
+
+    <div class="video-card">
+      <video autoplay muted loop playsinline>
+        <source src="assets/videos/place.mp4" type="video/mp4" />
+      </video>
+      <h3>Place</h3>
+      <p>The goal point defines the target placement location.</p>
+    </div>
+
+    <div class="video-card">
+      <video autoplay muted loop playsinline>
+        <source src="assets/videos/insert.mp4" type="video/mp4" />
+      </video>
+      <h3>Insert</h3>
+      <p>The policy aligns the object with a constrained receptacle.</p>
+    </div>
+
+    <div class="video-card">
+      <video autoplay muted loop playsinline>
+        <source src="assets/videos/open_close.mp4" type="video/mp4" />
+      </video>
+      <h3>Open / Close</h3>
+      <p>The goal point anchors interaction around the handle.</p>
+    </div>
+  </div>
+
+  <div class="architecture-card">
+    <div class="architecture-text">
+      <h3>Shared Goal-Conditioned Diffusion Policy</h3>
+      <p>
+        All primitives share the same policy structure. Multi-view wrist observations and proprioception are encoded together with a 3D goal point. The goal embedding is combined with the diffusion timestep and injected into the Diffusion Transformer through adaLN, allowing the target interaction point to modulate the denoising process.
+      </p>
+    </div>
+
+    <img
+      src="assets/architecture_cover.png"
+      alt="Point2Skill goal-conditioned diffusion policy architecture"
+      class="architecture-image"
+    />
+
+    <div class="architecture-points">
+      <div>
+        <span>01</span>
+        <h4>Multi-view observations</h4>
+        <p>Fisheye RGB and wrist RGB-D images provide scene context and local geometry.</p>
       </div>
 
-      <div class="video-card">
-        <video autoplay muted loop playsinline>
-          <source src="assets/videos/place.mp4" type="video/mp4" />
-        </video>
-        <h3>Place</h3>
+      <div>
+        <span>02</span>
+        <h4>3D goal point</h4>
+        <p>A user or VLM click is lifted to 3D and used as the geometric target.</p>
       </div>
 
-      <div class="video-card">
-        <video autoplay muted loop playsinline>
-          <source src="assets/videos/insert.mp4" type="video/mp4" />
-        </video>
-        <h3>Insert</h3>
+      <div>
+        <span>03</span>
+        <h4>adaLN conditioning</h4>
+        <p>The goal and timestep embeddings modulate the DiT denoising blocks.</p>
       </div>
 
-      <div class="video-card">
-        <video autoplay muted loop playsinline>
-          <source src="assets/videos/open_close.mp4" type="video/mp4" />
-        </video>
-        <h3>Open / Close</h3>
+      <div>
+        <span>04</span>
+        <h4>Action trajectory</h4>
+        <p>The policy predicts a sequence of robot actions for the selected primitive.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section id="videos" class="section dark-section">
+<section id="videos" class="section dark-section">
     <h2>Long-Horizon Tasks</h2>
 
     <div class="video-grid two">
