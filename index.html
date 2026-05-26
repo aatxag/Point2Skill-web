@@ -1,11 +1,201 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Point2Skill</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>Point2Skill</h1>
-  <p>Project page coming soon.</p>
+
+  <nav class="navbar">
+    <div class="nav-title">Point2Skill</div>
+    <div class="nav-links">
+      <a href="#abstract">Abstract</a>
+      <a href="#method">Method</a>
+      <a href="#skills">Skills</a>
+      <a href="#results">Results</a>
+      <a href="#paper">Paper</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <img src="assets/point2skill_logo.png" alt="Point2Skill logo" class="hero-logo" />
+
+    <h1>Point2Skill</h1>
+    <h2>3D Goals for Reusable Robot Skills</h2>
+
+    <p class="authors">
+      Alaitz Atxa Galdos · Co-authors
+    </p>
+
+    <p class="affiliation">
+      Mondragon Unibertsitatea
+    </p>
+
+    <div class="buttons">
+      <a href="assets/paper.pdf" class="button">Paper</a>
+      <a href="#" class="button">Code</a>
+      <a href="#videos" class="button">Videos</a>
+      <a href="#bibtex" class="button">BibTeX</a>
+    </div>
+
+    <div class="teaser-card">
+      <video autoplay muted loop playsinline>
+        <source src="assets/videos/teaser.mp4" type="video/mp4" />
+      </video>
+    </div>
+
+    <p class="tagline">
+      A user or VLM selects a 3D target point. Point2Skill turns it into a reusable robot skill.
+    </p>
+  </header>
+
+  <section id="abstract" class="section">
+    <h2>Abstract</h2>
+    <p>
+      Effective robot manipulation requires translating high-level intent into precise physical interaction.
+      A common approach is to use language as a task specification, with vision-language models providing
+      a flexible interface for interpreting instructions and reasoning about the scene. However, reliable
+      execution often requires more than semantic task understanding: manipulation policies benefit from
+      explicit geometric goals that specify where and how the robot should interact with the environment.
+      We introduce <b>Point2Skill</b>, a framework for specifying reusable manipulation skills through
+      3D target points.
+    </p>
+  </section>
+
+  <section id="method" class="section">
+    <h2>Method Overview</h2>
+
+    <div class="method-grid">
+      <div class="method-step">
+        <span>1</span>
+        <h3>Select a 3D Goal</h3>
+        <p>A human or VLM selects the target interaction point in the scene.</p>
+      </div>
+
+      <div class="method-step">
+        <span>2</span>
+        <h3>Condition the Skill</h3>
+        <p>The 3D point modulates a Diffusion Transformer policy through adaLN.</p>
+      </div>
+
+      <div class="method-step">
+        <span>3</span>
+        <h3>Execute the Primitive</h3>
+        <p>The robot executes Pick, Place, Insert, Open, or Close.</p>
+      </div>
+
+      <div class="method-step">
+        <span>4</span>
+        <h3>Compose Behaviors</h3>
+        <p>Goal-conditioned primitives are sequenced into long-horizon tasks.</p>
+      </div>
+    </div>
+
+    <img src="assets/architecture.png" alt="Point2Skill architecture" class="wide-image" />
+  </section>
+
+  <section id="skills" class="section">
+    <h2>Primitive Skills</h2>
+    <p class="section-intro">
+      Point2Skill learns a library of reusable goal-conditioned primitives.
+    </p>
+
+    <div class="video-grid">
+      <div class="video-card">
+        <video autoplay muted loop playsinline>
+          <source src="assets/videos/pick.mp4" type="video/mp4" />
+        </video>
+        <h3>Pick</h3>
+      </div>
+
+      <div class="video-card">
+        <video autoplay muted loop playsinline>
+          <source src="assets/videos/place.mp4" type="video/mp4" />
+        </video>
+        <h3>Place</h3>
+      </div>
+
+      <div class="video-card">
+        <video autoplay muted loop playsinline>
+          <source src="assets/videos/insert.mp4" type="video/mp4" />
+        </video>
+        <h3>Insert</h3>
+      </div>
+
+      <div class="video-card">
+        <video autoplay muted loop playsinline>
+          <source src="assets/videos/open_close.mp4" type="video/mp4" />
+        </video>
+        <h3>Open / Close</h3>
+      </div>
+    </div>
+  </section>
+
+  <section id="videos" class="section dark-section">
+    <h2>Long-Horizon Tasks</h2>
+
+    <div class="video-grid two">
+      <div class="video-card">
+        <video autoplay muted loop playsinline>
+          <source src="assets/videos/shopping.mp4" type="video/mp4" />
+        </video>
+        <h3>Shopping</h3>
+        <p>Repeated pick/place primitives collect requested items into a basket.</p>
+      </div>
+
+      <div class="video-card">
+        <video autoplay muted loop playsinline>
+          <source src="assets/videos/prepare.mp4" type="video/mp4" />
+        </video>
+        <h3>Prepare Breakfast</h3>
+        <p>A VLM sequences reusable primitives into a multi-step kitchen task.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="results" class="section">
+    <h2>Results</h2>
+
+    <div class="result-cards">
+      <div class="result-card">
+        <h3>Ablation Study</h3>
+        <p>We compare no goal, object labels, 2D points, 3D concatenation, and Point2Skill.</p>
+      </div>
+
+      <div class="result-card">
+        <h3>Primitive Evaluation</h3>
+        <p>Point2Skill is evaluated across Pick, Place, Insert, Open, and Close.</p>
+      </div>
+
+      <div class="result-card">
+        <h3>Compositional Tasks</h3>
+        <p>Reusable primitives are composed into long-horizon behaviors.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="paper" class="section">
+    <h2>Paper</h2>
+
+    <div class="buttons">
+      <a href="assets/paper.pdf" class="button">Read Paper</a>
+      <a href="#" class="button">GitHub Code</a>
+    </div>
+
+    <h3 id="bibtex">BibTeX</h3>
+    <pre><code>@inproceedings{atxa2026point2skill,
+  title={Point2Skill: 3D Goals for Reusable Robot Skills},
+  author={Atxa Galdos, Alaitz and ...},
+  booktitle={Conference on Robot Learning},
+  year={2026}
+}</code></pre>
+  </section>
+
+  <footer>
+    <p>© 2026 Point2Skill Project</p>
+  </footer>
+
 </body>
 </html>
