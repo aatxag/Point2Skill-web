@@ -55,23 +55,16 @@ Diffusion Primitives for Robot Control</h2>
   <section id="abstract" class="section">
   <h2>Abstract</h2>
   <p>
-    Effective robot manipulation requires translating high-level intent into precise physical interaction.
-    A common approach is to use language as a task specification, with vision-language models providing
-    a flexible interface for interpreting instructions and reasoning about the scene. However, reliable
-    execution often requires more than semantic task understanding: manipulation policies benefit from
-    explicit geometric goals that specify where and how the robot should interact with the environment.
-    We introduce <b>Point2Skill</b>, a framework for specifying reusable manipulation skills through
-    3D target points. Each primitive is modeled as a Diffusion Transformer policy conditioned on a goal
-    point via adaptive Layer Normalization, allowing geometric intent to modulate the denoising process
-    without the overhead of cross-attention. We instantiate a library of primitives, including
-    <i>Pick</i>, <i>Place</i>, <i>Insert</i>, <i>Open</i>, and <i>Close</i>, and provide an interactive
-    click-based interface through which either a human or a Vision-Language Model can select the target
-    point. This point-based parameterization abstracts skills away from object identity, enabling a
-    single primitive to generalize across object categories and novel instances. By separating task-level
-    reasoning from motion generation, the proposed framework supports reuse and composition of manipulation
-    skills. We further show that Vision-Language Models can sequence goal-conditioned primitives to perform
-    long-horizon manipulation tasks. Experiments on a Franka robot across multiple tasks and objects
-    demonstrate reliable execution of composed behaviors.
+    Effective robot manipulation requires translating high-level intent into precise physical interaction. 
+Despite the common approach in Vision Language Action models of task-specification is language;
+the lack of a 3D geometric grounding of those commands makes the policies hardly steerable.
+In this work, we augment the language semantic commanding with a 3D geometric grounding, providing a natural interface for steerable and reusable manipulation skills.
+We introduce <b>Point2Skill</b>, a framework for specifying reusable manipulation skills through 3D target points. 
+We instantiate a library of primitives, including <i>Pick</i>, <i>Place</i>, <i>Insert</i>, <i>Open</i>, and <i>Close</i>, each represented as a 3D point goal-conditioned diffusion policies.
+Then, we explore the interaction and concatenation of these primitives to solve complex long horizon tasks, both through
+an interactive click-based interface in which a human can design the robot task or by querying the task description and pointing to a Vision-Language Model (VLM). 
+This point-based parameterization abstracts skills away from object identity, enabling a single primitive to generalize across object categories and novel instances. By separating task-level reasoning from motion generation, the proposed framework supports reuse and composition of manipulation skills.
+To validate our hypothesis, we perform extensive experiments to evaluate the usefulness of point-conditioned primitives and perform a set of ablations to study the impact of different goal-conditionings when learning the skill primitives.
   </p>
 </section>
 
